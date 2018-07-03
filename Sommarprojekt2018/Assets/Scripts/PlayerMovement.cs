@@ -6,8 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     #region Variabler
     [SerializeField]
-    float _speed, _speedMultiplier, _jumpSpeed, _gravity;
-
+    float _speed, _sprintSpeed, _jumpSpeed, _gravity;
     Vector3 _moveDirection = Vector3.zero;
 
     CharacterController _characterController;
@@ -37,8 +36,9 @@ public class PlayerMovement : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.LeftShift))
             {
-                //Fixa sprint
+                //sprint
             }
+
         }
         _moveDirection.x = Input.GetAxis("Horizontal") * _speed; //Tillåter spelaren strafea i x-led i luften
         _moveDirection.z = Input.GetAxis("Vertical") * _speed; //Tillåter spelaren strafea i z-led i luften

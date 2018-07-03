@@ -411,7 +411,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 12
-  _speedMultiplier: 1.5
+  _sprintSpeed: 24
   _jumpSpeed: 18
   _gravity: 40
 --- !u!1 &1903869921
