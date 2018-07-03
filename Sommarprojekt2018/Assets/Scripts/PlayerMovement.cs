@@ -6,12 +6,11 @@ public class PlayerMovement : MonoBehaviour
 {
     #region Variabler
     [SerializeField]
-    float _speed, _sprintSpeed, _jumpSpeed, _gravity;
+    float _speed, _speedMultiplier, _jumpSpeed, _gravity;
 
     Vector3 _moveDirection = Vector3.zero;
 
     CharacterController _characterController;
-
 
     #endregion
 
@@ -23,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-
+        print(_speed);
         if (_characterController.isGrounded) //Ifall spelaren befinner sig på marken
         {
             _moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
@@ -33,6 +32,12 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetButton("Jump"))
             {
                 _moveDirection.y = _jumpSpeed;
+                //Fixa dubbelhopp
+            }
+
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                //Fixa sprint
             }
         }
         _moveDirection.x = Input.GetAxis("Horizontal") * _speed; //Tillåter spelaren strafea i x-led i luften
