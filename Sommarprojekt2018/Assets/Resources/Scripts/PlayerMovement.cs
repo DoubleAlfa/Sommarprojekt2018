@@ -17,12 +17,15 @@ public class PlayerMovement : MonoBehaviour
 
     CharacterController _characterController;
 
+    Hook _hs;
+
     #endregion
 
     #region Metoder
 
     void Start()
     {
+        _hs = GameObject.Find("Hook").GetComponent<Hook>();
         _characterController = GetComponent<CharacterController>();
         _normalSpeed = _speed;
     }
@@ -47,7 +50,23 @@ public class PlayerMovement : MonoBehaviour
             {
                 _speed = _sprintSpeed;
             }
+
+            if (Input.GetButtonDown("Fire1")) //Hooka
+            {
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hitInfo;
+
+                if (Physics.Raycast(ray, out hitInfo))
+                {
+                    if (hitInfo.transform.gameObject.tag == "Hookable") //Ifall det spelaren klickar på är ett objekt som spelaren kan "hooka" sig fast vid
+                    {
+                        _hs.Destination = hitInfo.transform.gameObject; //sätter det valda objektet som mål för "hooken"
+                        _hs.CreateRope();
+                    }
+                }
+            }
         }
+
         else
         {
             if (Input.GetButtonDown("Jump") && _doubleJump) //Dubbelhopp
@@ -65,3 +84,4 @@ public class PlayerMovement : MonoBehaviour
 
     #endregion
 }
+
