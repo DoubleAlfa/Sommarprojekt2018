@@ -43,11 +43,6 @@ public class Hook : MonoBehaviour
 
     #region Metoder
 
-    void Start()
-    {
-
-    }
-
     public void CreateRope()
     {
 
