@@ -34,6 +34,21 @@ public class PlayerMovement : MonoBehaviour
     {
         _speed = _normalSpeed;
 
+        if (Input.GetButtonDown("Fire1")) //Hooka
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hitInfo;
+
+            if (Physics.Raycast(ray, out hitInfo))
+            {
+                if (hitInfo.transform.gameObject.tag == "Hookable") //Ifall det spelaren klickar på är ett objekt som spelaren kan "hooka" sig fast vid
+                {
+                    _hs.Destination = hitInfo.transform.gameObject; //sätter det valda objektet som mål för "hooken"
+                    _hs.CreateRope();
+                }
+            }
+        }
+
         if (_characterController.isGrounded) //Ifall spelaren befinner sig på marken
         {
             _moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
@@ -49,21 +64,6 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetButton("Sprint")) //Springa
             {
                 _speed = _sprintSpeed;
-            }
-
-            if (Input.GetButtonDown("Fire1")) //Hooka
-            {
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hitInfo;
-
-                if (Physics.Raycast(ray, out hitInfo))
-                {
-                    if (hitInfo.transform.gameObject.tag == "Hookable") //Ifall det spelaren klickar på är ett objekt som spelaren kan "hooka" sig fast vid
-                    {
-                        _hs.Destination = hitInfo.transform.gameObject; //sätter det valda objektet som mål för "hooken"
-                        _hs.CreateRope();
-                    }
-                }
             }
         }
 

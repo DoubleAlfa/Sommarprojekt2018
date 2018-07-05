@@ -54,6 +54,7 @@ public class Hook : MonoBehaviour
 
         _testRope.transform.LookAt(transform.position); //Får repet att rikta sig emot "hookpistolen"
         transform.LookAt(_destination.transform.position); //Får "hookpistolen" att rikta sig emot objektet
+
     }
     #endregion
 }
