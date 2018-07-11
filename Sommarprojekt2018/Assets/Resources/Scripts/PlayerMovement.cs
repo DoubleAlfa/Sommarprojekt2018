@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
     {
         _speed = _normalSpeed;
 
-        if (Input.GetButton("Fire1")) //Hooka
+        if (Input.GetButtonDown("Fire1")) //Hooka
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hitInfo;

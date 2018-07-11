@@ -67,27 +67,27 @@ public class Hook : MonoBehaviour
 
             if (distance <= _maxRopeScaleMagnitude) //Ifall spelaren är i "hook" range
             {
-                _rope.transform.localScale = new Vector3(_ropeWidth, _ropeWidth, distance); //Skapar repet i de angivna skalorna
                 _rope.transform.position = _destination.transform.position - (between / 2.0f); //Placerar ut repet mellan spelarens "hookpistol" och objektet spelaren vill hook till  
+                _rope.transform.localScale = new Vector3(_ropeWidth, _ropeWidth, distance); //Skapar repet i de angivna skalorna
 
                 _rope.transform.LookAt(transform.position); //Får repet att rikta sig emot "hookpistolen"
                 transform.LookAt(_destination.transform.position); //Får "hookpistolen" att rikta sig emot objektet
 
 
-                if (Input.GetButton("Fire2")) //Får spelaren att klättra på repet
-                {
-                    float speed = 0.1f;
-                    _player.transform.position = Vector3.MoveTowards(_player.transform.position, _destination.transform.position, speed);
-                    _pm.MoveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+                //if (Input.GetButton("Fire2")) //Får spelaren att klättra på repet
+                //{
+                //    float speed = 0.1f;
+                //    _player.transform.position = Vector3.MoveTowards(_player.transform.position, _destination.transform.position, speed);
+                //    _pm.MoveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
-                    if (Input.GetButton("Jump")) //Tar bort repet när spelaren är i luften
-                    {
-                        _createRope = false;
-                        _rope.transform.position = new Vector3(-60, -60, -60);
-                        _pm.MoveDirection -= new Vector3(_player.transform.position.x, _pm.Gravity * Time.deltaTime, _player.transform.position.z);
-                    }
+                //    if (Input.GetButton("Jump")) //Tar bort repet när spelaren är i luften
+                //    {
+                //        _createRope = false;
+                //        _rope.transform.position = new Vector3(-60, -60, -60);
+                //        _pm.MoveDirection -= new Vector3(_player.transform.position.x, _pm.Gravity * Time.deltaTime, _player.transform.position.z);
+                //    }
 
-                }
+                //}
             }
         }
         else
