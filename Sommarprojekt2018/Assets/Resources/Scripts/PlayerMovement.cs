@@ -21,6 +21,20 @@ public class PlayerMovement : MonoBehaviour
 
     #endregion
 
+    #region Propeties
+
+    public Vector3 MoveDirection
+    {
+        get { return _moveDirection; }
+        set { _moveDirection = value; }
+    }
+
+    public float Gravity
+    {
+        get { return _gravity; }
+    }
+    #endregion
+
     #region Metoder
 
     void Start()
@@ -29,12 +43,11 @@ public class PlayerMovement : MonoBehaviour
         _characterController = GetComponent<CharacterController>();
         _normalSpeed = _speed;
     }
-
     void Update()
     {
         _speed = _normalSpeed;
 
-        if (Input.GetButtonDown("Fire1")) //Hooka
+        if (Input.GetButton("Fire1")) //Hooka
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hitInfo;
@@ -48,8 +61,6 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
-
-
 
         if (_characterController.isGrounded) //Ifall spelaren befinner sig på marken
         {
@@ -80,7 +91,7 @@ public class PlayerMovement : MonoBehaviour
 
         _moveDirection.x = Input.GetAxis("Horizontal") * _speed; //Tillåter spelaren strafea i x-led i luften
         _moveDirection.z = Input.GetAxis("Vertical") * _speed; //Tillåter spelaren strafea i z-led i luften
-        _moveDirection.y -= _gravity * Time.deltaTime;
+        _moveDirection.y -= _gravity * Time.deltaTime; //Tillämpar gravitation
         _characterController.Move(_moveDirection * Time.deltaTime);
     }
 

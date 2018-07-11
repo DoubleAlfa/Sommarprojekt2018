@@ -5,10 +5,15 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     #region Variabler
+
     [SerializeField]
     GameObject _player;
 
     Vector3 _offset;
+
+    float _smoothTime = 0.2F;
+
+    Vector3 _velocity = Vector3.zero;
     #endregion
 
     #region Metoder
@@ -17,9 +22,9 @@ public class CameraFollow : MonoBehaviour
         _offset = transform.position - _player.transform.position; //Räknar ut offset värdet genom att ta differensen mellan spelarensposition och kameransposition
     }
 
-    void LateUpdate() //Sätter kameransposition till samma som spelarensposition fast med uträknad offset
+    void Update() //Sätter kameransposition till samma som spelarensposition fast med uträknad offset
     {
-        transform.position = _player.transform.position + _offset;
+        transform.position = Vector3.SmoothDamp(transform.position, _player.transform.position + _offset, ref _velocity, _smoothTime);
     }
     #endregion
 }
