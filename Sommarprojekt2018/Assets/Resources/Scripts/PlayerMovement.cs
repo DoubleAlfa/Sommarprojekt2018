@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
 
     float _normalSpeed; //Håller koll på ursprungshastigheten av spelaren
 
-    bool _doubleJump = false;
+    bool _doubleJump = false, _inrange = false;
 
     Vector3 _moveDirection = Vector3.zero;
 
@@ -43,11 +43,28 @@ public class PlayerMovement : MonoBehaviour
         _characterController = GetComponent<CharacterController>();
         _normalSpeed = _speed;
     }
+
+    void OnTriggerEnter(Collider other) //Kollar ifall spelaren är i range för kunna använda sin hook
+    {
+        if (other.tag == "Hookable")
+        {
+            _inrange = true;
+        }
+    }
+
+    void OnTriggerExit(Collider other)  //Kollar ifall spelaren är i range för kunna använda sin hook
+    {
+        if (other.tag == "Hookable")
+        {
+            _inrange = false;
+        }
+    }
+
     void Update()
     {
         _speed = _normalSpeed;
 
-        if (Input.GetButtonDown("Fire1")) //Hooka
+        if (Input.GetButtonDown("Fire1") && _inrange) //Hooka
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hitInfo;
@@ -57,6 +74,8 @@ public class PlayerMovement : MonoBehaviour
                 if (hitInfo.transform.gameObject.tag == "Hookable") //Ifall det spelaren klickar på är ett objekt som spelaren kan "hooka" sig fast vid
                 {
                     _hs.Destination = hitInfo.transform.gameObject; //sätter det valda objektet som mål för "hooken"
+                    _hs.LR.enabled = true;
+                    _hs.LR.SetPosition(1, _hs.Destination.transform.position); //sätter repets slutposition till det valda objektet
                     _hs.CreateRope = true;
                 }
             }

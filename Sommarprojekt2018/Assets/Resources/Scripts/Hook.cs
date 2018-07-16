@@ -8,12 +8,13 @@ public class Hook : MonoBehaviour
     #region Variabler
 
     [SerializeField]
-    GameObject _rope, _player;
+    GameObject _player;
 
     [SerializeField]
-    float _ropeWidth;
+    float _speed, _colliderOffset;
 
-    float _maxRopeScaleMagnitude;
+    [SerializeField]
+    LineRenderer _lr; //Linerenderer ska simulera repet som drar in spelaren
 
     bool _createRope = false;
 
@@ -21,16 +22,9 @@ public class Hook : MonoBehaviour
 
     PlayerMovement _pm;
 
-    Vector3 _maxRopeScale;
-
     #endregion
 
     #region Properties 
-
-    public GameObject Rope
-    {
-        get { return _rope; }
-    }
 
     public GameObject Destination
     {
@@ -44,6 +38,12 @@ public class Hook : MonoBehaviour
         set { _createRope = value; }
     }
 
+    public LineRenderer LR
+    {
+        get { return _lr; }
+        set { _lr = value; }
+    }
+
     #endregion
 
     #region Metoder
@@ -51,52 +51,33 @@ public class Hook : MonoBehaviour
     void Start()
     {
         _pm = GameObject.Find("Player").GetComponent<PlayerMovement>();
-        _maxRopeScale = new Vector3(_ropeWidth, _ropeWidth, 20);
-        _maxRopeScaleMagnitude = _maxRopeScale.magnitude;
-    }
 
+    }
 
     void Update() //Skapar samt uppdaterar repets position
     {
         if (_createRope)
         {
-            var between = (_destination.transform.position - transform.position); //Kollar avståndet mellan "hooken" och dit spelaren "hookar"
-            var distance = between.magnitude; //Räknar ut längden mellan objekten
+            _lr.SetPosition(0, transform.position); //Sätter repets utgångsposition till hookpistolen
+            transform.LookAt(_destination.transform); //Uppdaterar spelarens hookpistolsrotation till att titta på målets position
 
-            if (distance <= _maxRopeScaleMagnitude) //Ifall spelaren är i "hook" range
+            _player.transform.position = Vector3.Lerp(_player.transform.position, _destination.transform.position, _speed * Time.deltaTime); //Förflyttar spelarens position till målets position i angiven hastighet
+
+            float distanceToHook = Vector3.Distance(transform.position, _destination.transform.position); //lagrar avståndet mellan hookpistolens position och målpositionen
+
+            if (distanceToHook <= _colliderOffset) //Ifall hookpistolen är "tillräckligt" nära målpositionen så tas repet bort och spelaren faller
             {
-                _rope.transform.position = _destination.transform.position - (between / 2.0f); //Placerar ut repet mellan spelarens "hookpistol" och objektet spelaren vill hooka till  
-                _rope.transform.localScale = new Vector3(_ropeWidth, _ropeWidth, distance); //Skapar repet i de angivna skalorna
-
-                _rope.transform.LookAt(transform.position); //Får repet att rikta sig emot "hookpistolen"
-                transform.LookAt(_destination.transform.position); //Får "hookpistolen" att rikta sig emot objektet
-
-
-                // _player.transform.position = Vector3.
-
-                if (Input.GetButton("Fire2")) //Får spelaren att klättra på repet
-                {
-                    float speed = 0.1f;
-                    _player.transform.position = Vector3.MoveTowards(_player.transform.position, _destination.transform.position, speed);
-                    _pm.MoveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-
-                    if (Input.GetButton("Jump")) //Tar bort repet när spelaren är i luften
-                    {
-                        _createRope = false;
-                        _rope.transform.position = new Vector3(-60, -60, -60);
-                        _pm.MoveDirection -= new Vector3(_player.transform.position.x, _pm.Gravity * Time.deltaTime, _player.transform.position.z);
-                    }
-
-                }
+                _lr.enabled = false;
+                _createRope = false;
             }
         }
         else
         {
-            _createRope = false;
-            _rope.transform.position = new Vector3(-60, -60, -60);
+            transform.rotation = Quaternion.identity; //Gör så att hookpistolensrotation återställs till att kolla rakt fram
         }
     }
 }
+
 
 #endregion
 
