@@ -4,7 +4,6 @@ using UnityEngine;
 //Av Andreas de Freitas
 public class SpeedLane : MonoBehaviour
 {
-
     #region Variabler
 
     [SerializeField]

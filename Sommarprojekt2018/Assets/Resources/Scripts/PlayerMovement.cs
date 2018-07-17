@@ -59,8 +59,6 @@ public class PlayerMovement : MonoBehaviour
         _hs = GameObject.Find("Hook").GetComponent<Hook>();
         _characterController = GetComponent<CharacterController>();
         _normalSpeed = _speed;
-        _doubleJump = false;
-        _inrange = false;
         _ableToSprint = true; //Bool som används för att spelaren inte ska kunna sprinta när spelaren befinner sig på en speedlane eftersom att hastigheten ska vara statisk under den tiden
     }
 
@@ -117,7 +115,7 @@ public class PlayerMovement : MonoBehaviour
                 _speed = _sprintSpeed;
             }
 
-            if (Input.GetButtonUp("Sprint") &&_ableToSprint) //Sluta springa
+            if (Input.GetButtonUp("Sprint") && _ableToSprint) //Sluta springa
             {
                 _speed = _normalSpeed;
             }
