@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
 
     float _normalSpeed; //Håller koll på ursprungshastigheten av spelaren
 
-    bool _doubleJump = false, _inrange = false;
+    bool _doubleJump, _inrange, _ableToSprint;
 
     Vector3 _moveDirection = Vector3.zero;
 
@@ -33,6 +33,23 @@ public class PlayerMovement : MonoBehaviour
     {
         get { return _gravity; }
     }
+
+    public float Speed
+    {
+        get { return _speed; }
+        set { _speed = value; }
+    }
+
+    public float NormalSpeed
+    {
+        get { return _normalSpeed; }
+    }
+
+    public bool AbleToSprint
+    {
+        get { return _ableToSprint; }
+        set { _ableToSprint = value; }
+    }
     #endregion
 
     #region Metoder
@@ -42,6 +59,9 @@ public class PlayerMovement : MonoBehaviour
         _hs = GameObject.Find("Hook").GetComponent<Hook>();
         _characterController = GetComponent<CharacterController>();
         _normalSpeed = _speed;
+        _doubleJump = false;
+        _inrange = false;
+        _ableToSprint = true; //Bool som används för att spelaren inte ska kunna sprinta när spelaren befinner sig på en speedlane eftersom att hastigheten ska vara statisk under den tiden
     }
 
     void OnTriggerEnter(Collider other) //Kollar ifall spelaren är i range för kunna använda sin hook
@@ -62,7 +82,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        _speed = _normalSpeed;
 
         if (Input.GetButtonDown("Fire1") && _inrange) //Hooka
         {
@@ -93,12 +112,16 @@ public class PlayerMovement : MonoBehaviour
                 _doubleJump = true;
             }
 
-            if (Input.GetButton("Sprint")) //Springa
+            if (Input.GetButton("Sprint") && _ableToSprint) //Springa
             {
                 _speed = _sprintSpeed;
             }
-        }
 
+            if (Input.GetButtonUp("Sprint") &&_ableToSprint) //Sluta springa
+            {
+                _speed = _normalSpeed;
+            }
+        }
         else
         {
             if (Input.GetButtonDown("Jump") && _doubleJump) //Dubbelhopp
