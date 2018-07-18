@@ -4,6 +4,7 @@ using UnityEngine;
 //Av Andreas de Freitas
 public class Hook : MonoBehaviour
 {
+    //Script som hanterar hookens egenskaper.
 
     #region Variabler
 

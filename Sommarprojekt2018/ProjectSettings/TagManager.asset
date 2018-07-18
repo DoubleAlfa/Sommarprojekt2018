@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Hookable
   - Hook
+  - RotatingObstacle
+  - DisappearingObstacle
+  - JumpPad
+  - SpeedBoost
   layers:
   - Default
   - TransparentFX

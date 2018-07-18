@@ -4,6 +4,8 @@ using UnityEngine;
 //Av Andreas de Freitas
 public class CameraFollow : MonoBehaviour
 {
+    //Script som hanterar kamerans rörelsemönster efter spelaren
+
     #region Variabler
 
     [SerializeField]

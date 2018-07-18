@@ -4,6 +4,8 @@ using UnityEngine;
 //Av Andreas de Freitas
 public class PlayerMovement : MonoBehaviour
 {
+    //Script som hanterar spelarens rörelser.
+
     #region Variabler
 
     [SerializeField]
