@@ -58,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        _hs = GameObject.Find("Hook").GetComponent<Hook>();
+        _hs = GameObject.Find("Player/Hook").GetComponent<Hook>();
         _characterController = GetComponent<CharacterController>();
         _normalSpeed = _speed;
         _ableToSprint = true; //Bool som används för att spelaren inte ska kunna sprinta när spelaren befinner sig på en speedlane eftersom att hastigheten ska vara statisk under den tiden
