@@ -12,6 +12,7 @@ public class Obstacle : MonoBehaviour
     [Header("Behövs endast bestämmas på Rotation obstacle")] float _rotationSpeed;
     [SerializeField]
     [Header("Behövs endast bestämmas på Disappearing obstacle")] float _timeLeft;
+    [SerializeField]
 
     float _maxTime;
 
@@ -63,7 +64,7 @@ public class Obstacle : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Player" && gameObject.tag =="DisappearingObstacle") //Eftersom att den endast behöver komma in i if satsen om objektet är en DisappearingObstacle
+        if (other.tag == "Player" && gameObject.tag == "DisappearingObstacle") //Eftersom att den endast behöver komma in i if satsen om objektet är en DisappearingObstacle
         {
             _timeLeft = _maxTime; //Sätter tillbaka timern till ursprungstiden ifall spelaren hoppar av plattformen
             _timer = false;
