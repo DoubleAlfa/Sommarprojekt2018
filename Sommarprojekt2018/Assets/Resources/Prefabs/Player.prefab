@@ -42,8 +42,8 @@ GameObject:
   - component: {fileID: 33064102498399922}
   - component: {fileID: 23710067591322526}
   - component: {fileID: 65444593687711958}
-  - component: {fileID: 114708120735665960}
   - component: {fileID: 120769747587551410}
+  - component: {fileID: 114995320467502560}
   m_Layer: 0
   m_Name: Hook
   m_TagString: Hook
@@ -71,7 +71,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1150087577969668}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.19006526, y: 1.9, z: -93}
+  m_LocalPosition: {x: -0.19006526, y: 1.9, z: -147.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4007948389752446}
@@ -93,7 +93,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 08203992d89dc954f806777f84df3ad8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -128,7 +128,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 08203992d89dc954f806777f84df3ad8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -189,7 +189,7 @@ MonoBehaviour:
   _sprintSpeed: 18
   _jumpSpeed: 10
   _gravity: 30
---- !u!114 &114708120735665960
+--- !u!114 &114995320467502560
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -201,7 +201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 1150087577969668}
-  _speed: 8
+  _speed: 4
   _colliderOffset: 4
   _lr: {fileID: 120769747587551410}
 --- !u!120 &120769747587551410

@@ -52,6 +52,7 @@ public class PlayerMovement : MonoBehaviour
         get { return _ableToSprint; }
         set { _ableToSprint = value; }
     }
+
     #endregion
 
     #region Metoder
