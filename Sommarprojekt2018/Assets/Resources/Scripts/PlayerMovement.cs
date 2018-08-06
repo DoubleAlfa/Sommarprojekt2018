@@ -109,7 +109,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (_boosted)
         {
-            transform.Translate(_moveDirection.x , 0, _speed);
+            transform.Translate(_moveDirection.x * _speed, 0, _speed);
         }
 
         if (_characterController.isGrounded) //Ifall spelaren befinner sig på marken
