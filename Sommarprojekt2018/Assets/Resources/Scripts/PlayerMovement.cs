@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
 
     float _normalSpeed; //Håller koll på ursprungshastigheten av spelaren
 
-    bool _doubleJump, _inrange, _ableToSprint;
+    bool _doubleJump, _inrange, _ableToSprint, _boosted;
 
     Vector3 _moveDirection = Vector3.zero;
 
@@ -51,6 +51,12 @@ public class PlayerMovement : MonoBehaviour
     {
         get { return _ableToSprint; }
         set { _ableToSprint = value; }
+    }
+
+    public bool Boosted
+    {
+        get { return _boosted; }
+        set { _boosted = value; }
     }
 
     #endregion
@@ -101,6 +107,11 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
+        if (_boosted)
+        {
+            transform.Translate(_moveDirection.x , 0, _speed);
+        }
+
         if (_characterController.isGrounded) //Ifall spelaren befinner sig på marken
         {
             _moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
@@ -137,7 +148,6 @@ public class PlayerMovement : MonoBehaviour
         _moveDirection.y -= _gravity * Time.deltaTime; //Tillämpar gravitation
         _characterController.Move(_moveDirection * Time.deltaTime);
     }
-
     #endregion
 }
 

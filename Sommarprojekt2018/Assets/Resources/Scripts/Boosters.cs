@@ -24,7 +24,7 @@ public class Boosters : MonoBehaviour
         _pm = GameObject.Find("Player").GetComponent<PlayerMovement>();
     }
 
-    void OnTriggerEnter(Collider other) 
+    void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
@@ -32,9 +32,10 @@ public class Boosters : MonoBehaviour
             {
                 _pm.AbleToSprint = false;
                 _pm.Speed = _speedBoost; //Får spelaren att springa fortare medans spelaren är i speedlanen
+                _pm.Boosted = true;
             }
 
-            if(gameObject.tag == "JumpPad")
+            if (gameObject.tag == "JumpPad")
             {
                 _pm.MoveDirection = new Vector3(0, _springStrength, 0); //Får spelaren att hoppa högre
             }
@@ -47,6 +48,7 @@ public class Boosters : MonoBehaviour
         {
             _pm.AbleToSprint = true;
             _pm.Speed = _pm.NormalSpeed;
+            _pm.Boosted = false;
         }
     }
 
