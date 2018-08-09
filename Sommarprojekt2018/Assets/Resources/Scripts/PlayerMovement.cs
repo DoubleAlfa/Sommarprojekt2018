@@ -107,7 +107,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (_boosted)
+        if (_boosted) //Ifall spelaren är i speedlanen ska spelarens röra sig i z led fram automatiskt i angiven hastighet
         {
             transform.Translate(_moveDirection.x * _speed, 0, _speed);
         }

@@ -4,6 +4,8 @@ using UnityEngine;
 //Av Andreas de Freitas
 public class DeathZone : MonoBehaviour
 {
+    //Hanterar deathcolliderns funktionalitet
+
     #region Variabler
     GameManager _gm;
     #endregion

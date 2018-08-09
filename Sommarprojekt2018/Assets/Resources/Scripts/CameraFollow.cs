@@ -28,5 +28,6 @@ public class CameraFollow : MonoBehaviour
     {
         transform.position = Vector3.SmoothDamp(transform.position, _player.transform.position + _offset, ref _velocity, _smoothTime);
     }
+
     #endregion
 }

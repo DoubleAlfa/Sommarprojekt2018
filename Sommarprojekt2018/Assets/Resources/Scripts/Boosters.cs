@@ -32,7 +32,7 @@ public class Boosters : MonoBehaviour
             {
                 _pm.AbleToSprint = false;
                 _pm.Speed = _speedBoost; //Får spelaren att springa fortare medans spelaren är i speedlanen
-                _pm.Boosted = true;
+                _pm.Boosted = true; //Sätter bool:en till true för att spelaren ska röra sig fram automatiskt 
             }
 
             if (gameObject.tag == "JumpPad")

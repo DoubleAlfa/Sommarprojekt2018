@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    //Script som hanterar olika händelser i spelet
 
     #region Variabler
 
