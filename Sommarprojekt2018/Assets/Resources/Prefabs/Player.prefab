@@ -42,8 +42,8 @@ GameObject:
   - component: {fileID: 33064102498399922}
   - component: {fileID: 23710067591322526}
   - component: {fileID: 65444593687711958}
-  - component: {fileID: 120769747587551410}
   - component: {fileID: 114995320467502560}
+  - component: {fileID: 120043912858176422}
   m_Layer: 0
   m_Name: Hook
   m_TagString: Hook
@@ -71,7 +71,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1150087577969668}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.19006526, y: 1.9, z: -147.3}
+  m_LocalPosition: {x: -0.19006526, y: 1.9, z: 231.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4007948389752446}
@@ -203,8 +203,8 @@ MonoBehaviour:
   _player: {fileID: 1150087577969668}
   _speed: 4
   _colliderOffset: 4
-  _lr: {fileID: 120769747587551410}
---- !u!120 &120769747587551410
+  _lr: {fileID: 120043912858176422}
+--- !u!120 &120043912858176422
 LineRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -219,7 +219,7 @@ LineRenderer:
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 190a3158fee0bd94fa2f09e8c3d7db64, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -241,10 +241,10 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 2
-    widthMultiplier: 0.5
+    widthMultiplier: 0.529
     widthCurve:
       serializedVersion: 2
       m_Curve:
