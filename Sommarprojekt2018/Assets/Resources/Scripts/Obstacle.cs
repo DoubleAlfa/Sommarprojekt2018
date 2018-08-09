@@ -40,7 +40,7 @@ public class Obstacle : MonoBehaviour
     {
         if (_rotation) //Roterar plattformen i vald hastighet
         {
-            transform.Rotate(Vector3.up * _rotationSpeed, Space.World);
+            transform.Rotate(Vector3.up * _rotationSpeed, Space.Self);
         }
 
         if (_dissapearing && _timer)
