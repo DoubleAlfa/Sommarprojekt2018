@@ -12,7 +12,7 @@ public class Hook : MonoBehaviour
     GameObject _player;
 
     [SerializeField]
-    float _speed, _colliderOffset;
+    float _travelSpeed, _colliderOffset;
 
     [SerializeField]
     LineRenderer _lr; //Linerenderer ska simulera repet som drar in spelaren
@@ -53,16 +53,18 @@ public class Hook : MonoBehaviour
     {
         _pm = GameObject.Find("Player").GetComponent<PlayerMovement>();
 
+
     }
 
-    void Update() //Skapar samt uppdaterar repets position
+    void Update()
     {
-        if (_createRope)
+        if (_createRope) //Skapar samt uppdaterar repets position
         {
             _lr.SetPosition(0, transform.position); //Sätter repets utgångsposition till hookpistolen
             transform.LookAt(_destination.transform); //Uppdaterar spelarens hookpistolsrotation till att titta på målets position
+            _lr.enabled = true;
 
-            _player.transform.position = Vector3.Lerp(_player.transform.position, _destination.transform.position, _speed * Time.deltaTime); //Förflyttar spelarens position till målets position i angiven hastighet
+            _player.transform.position = Vector3.Lerp(_player.transform.position, _destination.transform.position, _travelSpeed * Time.deltaTime); //Förflyttar spelarens position till målets position i angiven hastighet
 
             float distanceToHook = Vector3.Distance(transform.position, _destination.transform.position); //lagrar avståndet mellan hookpistolens position och målpositionen
 

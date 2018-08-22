@@ -100,9 +100,8 @@ public class PlayerMovement : MonoBehaviour
                 if (hitInfo.transform.gameObject.tag == "Hookable") //Ifall det spelaren klickar på är ett objekt som spelaren kan "hooka" sig fast vid
                 {
                     _hs.Destination = hitInfo.transform.gameObject; //sätter det valda objektet som mål för "hooken"
-                    _hs.LR.enabled = true;
                     _hs.LR.SetPosition(1, _hs.Destination.transform.position); //sätter repets slutposition till det valda objektet
-                    _hs.CreateRope = true;
+                    _hs.CreateRope = true; 
                 }
             }
         }
