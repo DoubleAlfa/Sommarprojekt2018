@@ -1681,21 +1681,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114995320467502560, guid: c1b20c6179d21aa41b47d9fdb71c9054,
-        type: 2}
-      propertyPath: _speed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114995320467502560, guid: c1b20c6179d21aa41b47d9fdb71c9054,
-        type: 2}
-      propertyPath: _travelSpeed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 114995320467502560, guid: c1b20c6179d21aa41b47d9fdb71c9054,
-        type: 2}
-      propertyPath: _colliderOffset
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c1b20c6179d21aa41b47d9fdb71c9054, type: 2}
   m_IsPrefabParent: 0

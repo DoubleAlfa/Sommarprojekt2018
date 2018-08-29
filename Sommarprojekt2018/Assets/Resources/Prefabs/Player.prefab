@@ -201,8 +201,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 1150087577969668}
-  _speed: 4
-  _colliderOffset: 4
+  _travelSpeed: 4
+  _colliderOffset: 5
   _lr: {fileID: 120043912858176422}
 --- !u!120 &120043912858176422
 LineRenderer:

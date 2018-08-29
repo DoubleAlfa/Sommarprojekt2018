@@ -49,7 +49,7 @@ public class Obstacle : MonoBehaviour
 
             if (_timeLeft <= 0) //Ifall timern kommer ner till 0 så tas plattformen bort
             {
-                Destroy(gameObject);
+                Destroy(this.gameObject);
             }
         }
     }
